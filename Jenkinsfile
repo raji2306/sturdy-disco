@@ -22,7 +22,7 @@ pipeline {
     stages {
         stage ("Git Checkout Stage"){
             steps {
-                git branch: '${env.my_branch}' ,
+                git branch: "${env.my_branch}" ,
                 credentialsId: 'git_cred',
                 url: 'git@github.com:raji2306/sturdy-disco.git'
             }
