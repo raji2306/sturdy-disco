@@ -19,8 +19,7 @@ pipeline {
     stages {
         stage ("Git Checkout Stage"){
            triggers{
-               cron : '*/20 * * * *
-' 
+               cron : '*/20 * * * *' 
             }
             steps {
                 git branch: $GIT_BRANCH ,
