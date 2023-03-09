@@ -55,13 +55,14 @@ pipeline {
         }
         stage ("Uploading Generated War file to JFrog Repository"){
             steps {
+                timeout(time: 30, unit: 'MINUTES') {
                 rtServer(
                     id : "jfrog",
                     url : "",
                     credentialsId : "jfrog-cred",
-                    bypassProxy : true,
-                    timeout : time: 1, unit: 'SECONDS'
+                    bypassProxy : true
                 )
+                }
                 rtUpload(
                     serverId :"jfrog",
                     spec : '''{
