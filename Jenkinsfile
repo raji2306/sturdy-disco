@@ -53,44 +53,44 @@ pipeline {
             }
             
         }
-        stage ("Uploading Generated War file to JFrog Repository"){
-            steps {
-                timeout(time: 30, unit: 'MINUTES') {
-                rtServer(
-                    id : "jfrog",
-                    url : "",
-                    credentialsId : "jfrog-cred",
-                    bypassProxy : true
-                )
-                }
-                rtUpload(
-                    serverId :"jfrog",
-                    spec : '''{
-                        "files" : [
-                            {
-                                "pattern" : "*.war",
-                                "target" : "jenkins-repo/",
-                                "props" : "retention.days=11"
-                            }
-                        ]
-                    }'''
-                    "failNoOp": true
-                )
-            }
-        }
-        stage ("Downloading Important Records from Artifactory Repo"){
-            steps {
-                rtDownload {
-                    serverId : "jfrog",
-                    spec : '''{
-                        files : [
-                            "pattern" : "jenkins-repo/*"
-                            "target" : "home/"
-                        ]
-                    }'''
-                }
-                cleanWs()
-            }
-        }
+//         stage ("Uploading Generated War file to JFrog Repository"){
+//             steps {
+//                 timeout(time: 30, unit: 'MINUTES') {
+//                 rtServer(
+//                     id : "jfrog",
+//                     url : "",
+//                     credentialsId : "jfrog-cred",
+//                     bypassProxy : true
+//                 )
+//                 }
+//                 rtUpload(
+//                     serverId :"jfrog",
+//                     spec : '''{
+//                         "files" : [
+//                             {
+//                                 "pattern" : "*.war",
+//                                 "target" : "jenkins-repo/",
+//                                 "props" : "retention.days=11"
+//                             }
+//                         ]
+//                     }'''
+//                     "failNoOp": true
+//                 )
+//             }
+//         }
+//         stage ("Downloading Important Records from Artifactory Repo"){
+//             steps {
+//                 rtDownload {
+//                     serverId : "jfrog",
+//                     spec : '''{
+//                         files : [
+//                             "pattern" : "jenkins-repo/*"
+//                             "target" : "home/"
+//                         ]
+//                     }'''
+//                 }
+//                 cleanWs()
+//             }
+//         }
     }
 }
