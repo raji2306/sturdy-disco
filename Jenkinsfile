@@ -5,7 +5,7 @@ pipeline {
         string(name: 'branch', defaultValue: 'master', description: 'Choose the branch that you wants to checkout')
     }
     environment {
-        machine = ${params.machine}
+//         machine = ${params.machine}
         GIT_BRANCH = ${params.branch}
     }
     tools {
