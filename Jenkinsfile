@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
 //         machine = ${params.machine}
-        GIT_BRANCHY = "${params.branch}"
+           my_branch = "${params.branch}"
     }
     tools {
         jdk  "java"
@@ -22,7 +22,7 @@ pipeline {
     stages {
         stage ("Git Checkout Stage"){
             steps {
-                git branch: 'master' ,
+                git branch: '${my_branch}' ,
                 credentialsId: 'git_cred',
                 url: 'git@github.com:raji2306/sturdy-disco.git'
             }
@@ -38,9 +38,11 @@ pipeline {
 //             }
 //         }
         stage ("Running Build and Packaging Stage"){
-//             When{
-//                 env.GIT_BRANCH == "master"
-//             }
+            When{
+                expression {
+                    env.GIT_BRANCH == "master"
+                }
+            }
             steps {
                 sh "mvn package"
 //                 script {
