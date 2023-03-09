@@ -22,7 +22,7 @@ pipeline {
 //              triggers{
 //                cron : '*/20 * * * *' 
 //             }
-                git branch: $GIT_BRANCHY ,
+                git branch: 'master' ,
                 credentialsId: 'git_cred',
                 url: 'git@github.com:raji2306/sturdy-disco.git'
             }
