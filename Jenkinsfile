@@ -5,7 +5,6 @@ pipeline {
         string(name: 'branch', defaultValue: 'master', description: 'Choose the branch that you wants to checkout')
     }
     environment {
-//         machine = ${params.machine}
            my_branch = "${params.branch}"
     }
     tools {
@@ -13,9 +12,6 @@ pipeline {
         maven "maven"
     }
     agent any 
-//     agent {
-//         label $machine
-//     }
      triggers{
         cron('*/20 * * * *' )
        }
@@ -45,14 +41,14 @@ pipeline {
             }
             steps {
                 sh "mvn package"
-//                 script {
-//                     if( currentBuild.currentResult == success ){
-//                         echo "Build Stage is successful"
-//                     }
-//                     else {
-//                         echo "Build Stage is unsuccessful"
-//                     }
-//                 }
+                script {
+                    if( currentBuild.currentResult == success ){
+                        echo "Build Stage is successful"
+                    }
+                    else {
+                        echo "Build Stage is unsuccessful"
+                    }
+                }
             }
             
         }
