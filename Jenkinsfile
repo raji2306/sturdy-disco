@@ -19,9 +19,9 @@ pipeline {
     stages {
         stage ("Git Checkout Stage"){
             steps {
-//              triggers{
-//                cron : '*/20 * * * *' 
-//             }
+             triggers{
+               cron('*/20 * * * *' )
+            }
                 git branch: 'master' ,
                 credentialsId: 'git_cred',
                 url: 'git@github.com:raji2306/sturdy-disco.git'
