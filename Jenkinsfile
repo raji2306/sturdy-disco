@@ -38,7 +38,7 @@ pipeline {
 //             }
 //         }
         stage ("Running Build and Packaging Stage"){
-            When{
+            when{
                 expression {
                     env.GIT_BRANCH == "master"
                 }
