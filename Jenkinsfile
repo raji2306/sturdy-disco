@@ -12,9 +12,10 @@ pipeline {
         java "java"
         maven "maven"
     }
-    agent {
-        label $machine
-    }
+    agent any 
+//     agent {
+//         label $machine
+//     }
     stages {
         stage ("Git Checkout Stage"){
             steps {
