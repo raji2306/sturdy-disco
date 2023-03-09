@@ -43,14 +43,14 @@ pipeline {
 //             }
             steps {
                 sh "mvn package"
-                script {
-                    if( currentBuild.currentResult == success ){
-                        echo "Build Stage is successful"
-                    }
-                    else {
-                        echo "Build Stage is unsuccessful"
-                    }
-                }
+//                 script {
+//                     if( currentBuild.currentResult == success ){
+//                         echo "Build Stage is successful"
+//                     }
+//                     else {
+//                         echo "Build Stage is unsuccessful"
+//                     }
+//                 }
             }
             
         }
