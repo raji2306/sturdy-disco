@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
 //         machine = ${params.machine}
-        GIT_BRANCH = ${params.branch}
+        GIT_BRANCH = "${params.branch}"
     }
     tools {
         java "java"
@@ -18,13 +18,15 @@ pipeline {
 //     }
     stages {
         stage ("Git Checkout Stage"){
+            when {
+                triggers{
+                cron : 'H */4 * * *' 
+                }
+            }
             steps {
                 git branch: $GIT_BRANCH ,
                 credentialsId: 'git_cred',
                 url: 'git@github.com:raji2306/sturdy-disco.git'
-            }
-            triggers{
-                cron : 'H */4 * * *' 
             }
         }
         stage ("Run Shared Library to verify the Changes"){  
