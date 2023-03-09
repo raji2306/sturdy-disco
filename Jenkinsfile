@@ -9,7 +9,7 @@ pipeline {
         GIT_BRANCH = "${params.branch}"
     }
     tools {
-        java "java"
+        jdk  "java"
         maven "maven"
     }
     agent any 
@@ -18,10 +18,9 @@ pipeline {
 //     }
     stages {
         stage ("Git Checkout Stage"){
-            when {
-                triggers{
-                cron : 'H */4 * * *' 
-                }
+           triggers{
+               cron : '*/20 * * * *
+' 
             }
             steps {
                 git branch: $GIT_BRANCH ,
@@ -41,7 +40,7 @@ pipeline {
         }
         stage ("Running Build and Packaging Stage"){
             When{
-                GIT_BRANCH = "master"
+                GIT_BRANCH == "master"
             }
             steps {
                 sh "mvn package"
