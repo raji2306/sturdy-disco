@@ -27,16 +27,16 @@ pipeline {
                 url: 'git@github.com:raji2306/sturdy-disco.git'
             }
         }
-        stage ("Run Shared Library to verify the Changes"){  
-            steps {
-                helloBuddy("rajesh", $date)
-            }
-            post {
-                failure {
-                    echo "Fine! The stage completed successfully"
-                }
-            }
-        }
+//         stage ("Run Shared Library to verify the Changes"){  
+//             steps {
+//                 helloBuddy("rajesh", $date)
+//             }
+//             post {
+//                 failure {
+//                     echo "Fine! The stage completed successfully"
+//                 }
+//             }
+//         }
         stage ("Running Build and Packaging Stage"){
 //             When{
 //                 env.GIT_BRANCH == "master"
