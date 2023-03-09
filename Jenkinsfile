@@ -19,9 +19,9 @@ pipeline {
     stages {
         stage ("Git Checkout Stage"){
             steps {
-             triggers{
-               cron : '*/20 * * * *' 
-            }
+//              triggers{
+//                cron : '*/20 * * * *' 
+//             }
                 git branch: $GIT_BRANCHY ,
                 credentialsId: 'git_cred',
                 url: 'git@github.com:raji2306/sturdy-disco.git'
@@ -38,9 +38,9 @@ pipeline {
             }
         }
         stage ("Running Build and Packaging Stage"){
-            When{
-                env.GIT_BRANCH == "master"
-            }
+//             When{
+//                 env.GIT_BRANCH == "master"
+//             }
             steps {
                 sh "mvn package"
                 script {
