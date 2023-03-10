@@ -64,6 +64,7 @@ pipeline {
                 }
                 rtUpload(
                     serverId :"jfrog",
+                    failNoOp: true,
                     spec : '''{
                         "files" : [
                             {
@@ -73,7 +74,6 @@ pipeline {
                             }
                         ]
                     }'''
-                    failNoOp: true
                 )
             }
         }
