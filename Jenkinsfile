@@ -90,7 +90,7 @@ pipeline {
                 rtDownload {
                     serverId : 'jfrog',
                     spec : '''{
-                        files : [
+                        "files" : [
                             "pattern" : "jenkins-repo/*"
                             "target" : "/"
                         ]
