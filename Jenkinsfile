@@ -73,7 +73,7 @@ pipeline {
                             }
                         ]
                     }'''
-                    "failNoOp": true
+                    failNoOp: true
                 )
             }
         }
