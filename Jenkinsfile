@@ -10,7 +10,7 @@ pipeline {
     tools {
         jdk  "java"
         maven "maven"
-        jfrog-cli "jfrog-cli"
+        jfrog "jfrog-cli"
     }
     agent any 
      triggers{
