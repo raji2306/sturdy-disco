@@ -86,8 +86,8 @@ pipeline {
                     serverId : 'jfrog',
                     spec : '''{
                         "files" : [
-                            "pattern" : "jenkins-repo/"
-                            "target" : "bazinga/"
+                            "pattern" : "jenkins-repo/rajiuuu/"
+                            "target" : "/"
                         ]
                     }'''
                 )
