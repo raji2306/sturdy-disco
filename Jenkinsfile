@@ -82,7 +82,7 @@ pipeline {
         stage ("Downloading Important Records from Artifactory Repo"){
             steps {
 //                 unstash 'jfrog'
-                rtDownload {
+                rtDownload (
                     serverId : 'jfrog',
                     spec : '''{
                         "files" : [
@@ -90,7 +90,7 @@ pipeline {
                             "target" : "/"
                         ]
                     }'''
-                }
+                )
                 cleanWs()
             }
         }
