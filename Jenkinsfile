@@ -57,8 +57,8 @@ pipeline {
                 timeout(time: 30, unit: 'MINUTES') {
                 rtServer(
                     id : 'jfrog',
-                    url : "http://43.204.114.146:8081/artifactory",
-                    credentialsId : "jfrog-cred",
+                    url : 'http://43.204.114.146:8081/artifactory',
+                    credentialsId : 'jfrog-cred',
                     bypassProxy : true
                 )
                 }
@@ -80,7 +80,7 @@ pipeline {
         stage ("Downloading Important Records from Artifactory Repo"){
             steps {
                 rtDownload {
-                    serverId : "jfrog",
+                    serverId : 'jfrog',
                     spec : '''{
                         files : [
                             "pattern" : "jenkins-repo/*"
