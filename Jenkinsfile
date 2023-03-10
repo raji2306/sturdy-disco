@@ -76,9 +76,11 @@ pipeline {
                     }'''
                 )
             }
+            stash name: 'jfrog', includes: 'jfrog, url, credentialsId'
         }
         stage ("Downloading Important Records from Artifactory Repo"){
             steps {
+                unstash 'jfrog'
                 rtDownload {
                     serverId : 'jfrog',
                     spec : '''{
