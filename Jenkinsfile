@@ -76,11 +76,17 @@ pipeline {
                     }'''
                 )
             }
-            stash name: 'jfrog', includes: 'jfrog, url, credentialsId'
+//             stash name: 'jfrog', includes: 'jfrog, url, credentialsId'
         }
         stage ("Downloading Important Records from Artifactory Repo"){
             steps {
-                unstash 'jfrog'
+//                 unstash 'jfrog'
+                rtServer(
+                    id : 'jfrog',
+                    url : 'http://43.204.114.146:8081/artifactory',
+                    credentialsId : 'jfrog-cred',
+                    bypassProxy : true
+                )
                 rtDownload {
                     serverId : 'jfrog',
                     spec : '''{
