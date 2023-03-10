@@ -87,7 +87,7 @@ pipeline {
                     spec : '''{
                         "files" : [
                             "pattern" : "jenkins-repo/*"
-                            "target" : "/jfrog/"
+                            "target" : "jfrog/"
                         ]
                     }'''
                 )
