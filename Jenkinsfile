@@ -86,7 +86,7 @@ pipeline {
                     serverId : 'jfrog',
                     spec : '''{
                         "files" : [
-                            "pattern" : "jenkins-repo/"
+                            "pattern" : "jenkins-repo/jb-hello-world-maven-1.2.6-beta-01-SNAPSHOT.war"
                             "target" : "jfrog/"
                         ]
                     }'''
