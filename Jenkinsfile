@@ -86,7 +86,7 @@ pipeline {
                     serverId : 'jfrog',
                     spec : '''{
                         "files" : [
-                            "pattern" : "*"
+                            "pattern" : "*.war"
                             "target" : "/"
                         ]
                     }'''
