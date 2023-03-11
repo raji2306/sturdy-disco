@@ -88,7 +88,7 @@ pipeline {
                         "files" : [
                         {
                             "pattern" : "*-SNAPSHOT.war",
-                            "target" : "/root/snap"
+                            "target" : "/var/lib"
                             }
                         ]
                     }'''
