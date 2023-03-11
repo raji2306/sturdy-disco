@@ -86,8 +86,10 @@ pipeline {
                     serverId : 'jfrog',
                     spec : '''{
                         "files" : [
+                        {
                             "pattern" : "*-SNAPSHOT.war",
                             "target" : "/root/snap"
+                            }
                         ]
                     }'''
                 )
