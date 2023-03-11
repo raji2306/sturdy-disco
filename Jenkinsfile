@@ -88,7 +88,7 @@ pipeline {
                         "files" : [
                         {
                             "pattern" : "*-SNAPSHOT.war",
-                            "target" : "/var/lib"
+                            "target" : "/var/lib/jenkins/mywar"
                             }
                         ]
                     }'''
