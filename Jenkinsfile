@@ -58,7 +58,7 @@ pipeline {
 //                 timeout(time: 30, unit: 'MINUTES') 
                 rtServer(
                     id : "jfrog",
-                    url : 'http://43.204.114.146:8081/artifactory',
+                    url : 'http://3.110.42.20:8082/artifactory',
                     credentialsId : 'jfrog-cred',
                     bypassProxy : true,
                     timeout: 300
