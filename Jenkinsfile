@@ -42,7 +42,8 @@ pipeline {
                 }
             }
             steps {
-                sh "mvn package"
+                sh "mvn package surefire-report:report"
+                sh "tree"
                 script {
                     if( currentBuild.currentResult == "SUCCESS" ){
                         echo "Build Stage is successful"
@@ -60,6 +61,7 @@ pipeline {
                 displayDirectory("./workspace")  
             }
         }
+       
 //         stage ("Uploading Generated War file to JFrog Repository"){
 //             steps {
 // //                 timeout(time: 30, unit: 'MINUTES') 
