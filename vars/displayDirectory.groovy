@@ -1,4 +1,4 @@
-def displayDirectory(string directory){
+def displayDirectory(String directory){
   def filename = new File(directory)
   if(filename.isDirectory()){
     def files  = filename.listFile()
