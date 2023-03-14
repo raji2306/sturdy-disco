@@ -4,6 +4,6 @@ def fileRead(string filename){
     def content = file.readLines() 
   }
    else {
-     echo "File doesn't exist, So can't able to read the file"
+     println "File doesn't exist, So can't able to read the file"
    }
 }
