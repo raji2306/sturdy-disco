@@ -1,4 +1,3 @@
-@NonCPS
 import groovy.io.FileType
 @Library("shared-library") _
 pipeline {
