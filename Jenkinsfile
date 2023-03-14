@@ -56,7 +56,7 @@ pipeline {
         
         stage("Moving artifacts into other directory"){
             steps {
-                displayDirectory("/jenkins")  
+                displayDirectory("lib")  
             }
         }
 //         stage ("Uploading Generated War file to JFrog Repository"){
