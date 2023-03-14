@@ -1,3 +1,4 @@
+@NonCPS
 def call(String directory){
   def filename = new File(directory)
 //   if(filename.isDirectory()){
