@@ -55,7 +55,7 @@ pipeline {
         
         stage("Moving artifacts into other directory"){
             steps {
-                sh "mv /var/lib/jenkins/workspace/jenkins-pipeline/target/*.war /myartifacts"    
+                displayDirectory("var")  
             }
         }
 //         stage ("Uploading Generated War file to JFrog Repository"){
