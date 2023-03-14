@@ -5,6 +5,7 @@ def displayDirectory(string directory){
     files.each {
       file -> println file.getName()
    }
+  }
   else {
     println "Not able to located the requested directory, Re-check the Path"
   }
