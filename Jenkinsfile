@@ -44,7 +44,7 @@ pipeline {
                 sh "mvn package"
                 script {
                     if( currentBuild.currentResult == "SUCCESS" ){
-                        echo "Build Stage is successful"
+                        sh "mv ~/*.war /"
                     }
                     else {
                         echo "Build Stage is unsuccessful"
@@ -53,48 +53,48 @@ pipeline {
             }
             
         }
-        stage ("Uploading Generated War file to JFrog Repository"){
-            steps {
-//                 timeout(time: 30, unit: 'MINUTES') 
-                rtServer(
-                    id : "jfrog",
-                    url : 'http://3.110.42.20:8082/artifactory',
-                    credentialsId : 'jfrog-cred',
-                    bypassProxy : true,
-                    timeout: 300
-                )
-                rtUpload(
-                    serverId :"jfrog",
-//                     failNoOp: true,
-                    spec : '''{
-                        "files" : [
-                            {
-                                "pattern" : "*.war",
-                                "target" : "jenkins-repo/",
-                                "props" : "retention.days=11"
-                            }
-                        ]
-                    }'''
-                )
-            }
-//             stash name: 'jfrog', includes: 'jfrog, url, credentialsId'
-        }
-        stage ("Downloading Important Records from Artifactory Repo"){
-            steps {
-//                 unstash 'jfrog'
-                rtDownload (
-                    serverId : 'jfrog',
-                    spec : '''{
-                        "files" : [
-                        {
-                            "pattern" : "*-SNAPSHOT.war",
-                            "target" : "mywar/"
-                            }
-                        ]
-                    }'''
-                )
-//                 cleanWs()
-            }
-        }
+//         stage ("Uploading Generated War file to JFrog Repository"){
+//             steps {
+// //                 timeout(time: 30, unit: 'MINUTES') 
+//                 rtServer(
+//                     id : "jfrog",
+//                     url : 'http://3.110.42.20:8082/artifactory',
+//                     credentialsId : 'jfrog-cred',
+//                     bypassProxy : true,
+//                     timeout: 300
+//                 )
+//                 rtUpload(
+//                     serverId :"jfrog",
+// //                     failNoOp: true,
+//                     spec : '''{
+//                         "files" : [
+//                             {
+//                                 "pattern" : "*.war",
+//                                 "target" : "jenkins-repo/",
+//                                 "props" : "retention.days=11"
+//                             }
+//                         ]
+//                     }'''
+//                 )
+//             }
+// //             stash name: 'jfrog', includes: 'jfrog, url, credentialsId'
+//         }
+//         stage ("Downloading Important Records from Artifactory Repo"){
+//             steps {
+// //                 unstash 'jfrog'
+//                 rtDownload (
+//                     serverId : 'jfrog',
+//                     spec : '''{
+//                         "files" : [
+//                         {
+//                             "pattern" : "*-SNAPSHOT.war",
+//                             "target" : "mywar/"
+//                             }
+//                         ]
+//                     }'''
+//                 )
+// //                 cleanWs()
+//             }
+//         }
     }
 }
