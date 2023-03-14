@@ -1,4 +1,3 @@
-import groovy.io.filetype
 def displayDirectory(String directory){
   def filename = new File(directory)
   if(filename.isDirectory()){
