@@ -105,7 +105,7 @@ pipeline {
 // //                 cleanWs()
 //             }
 //         }
-        stage("Publish HTML Report"){
+    }
         post {
             success{
                   publishHTML (target : [allowMissing: false,
@@ -115,7 +115,5 @@ pipeline {
                  reportName: 'SureFire Report',
                  reportTitles: 'SureFire Reports'])
             }
-        }
        }
-    }
 }
