@@ -42,7 +42,7 @@ pipeline {
                 }
             }
             steps {
-                sh "mvn package site surefire-report:report"
+                sh "mvn package  surefire-report:report"
                 sh "tree"
                 script {
                     if( currentBuild.currentResult == "SUCCESS" ){
