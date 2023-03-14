@@ -55,7 +55,7 @@ pipeline {
         
         stage("Moving artifacts into other directory"){
             steps {
-                sh "mv *.war /"    
+                sh "mv /*.war /myartifacts"    
             }
         }
 //         stage ("Uploading Generated War file to JFrog Repository"){
