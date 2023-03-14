@@ -114,11 +114,7 @@ pipeline {
                  reportFiles: 'surefire.html',
                  reportName: 'SureFire Report',
                  reportTitles: 'SureFire Reports'])
-            }
-       }
-        post {
-            always{
                 archiveArtifacts artifacts: 'target/', fingerprint: true
             }
-        }
+       }
 }
