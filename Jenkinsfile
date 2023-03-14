@@ -44,14 +44,19 @@ pipeline {
                 sh "mvn package"
                 script {
                     if( currentBuild.currentResult == "SUCCESS" ){
-                        sh "mv *.war /"
+                        sh "Build Stage is successful"
                     }
                     else {
                         echo "Build Stage is unsuccessful"
                     }
                 }
             }
-            
+        }
+        
+        stage("Moving artifacts into other directory"){
+            steps {
+                sh "mv *.war /"    
+            }
         }
 //         stage ("Uploading Generated War file to JFrog Repository"){
 //             steps {
