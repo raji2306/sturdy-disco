@@ -44,7 +44,7 @@ pipeline {
                 sh "mvn package"
                 script {
                     if( currentBuild.currentResult == "SUCCESS" ){
-                        sh "Build Stage is successful"
+                        echo "Build Stage is successful"
                     }
                     else {
                         echo "Build Stage is unsuccessful"
