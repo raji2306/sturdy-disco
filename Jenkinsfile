@@ -111,7 +111,7 @@ pipeline {
                   publishHTML (target : [allowMissing: false,
                  keepAll: true,
                  reportDir: 'target/site',
-                 reportFiles: 'surefire.html',
+                 reportFiles: 'surefire-report.html',
                  reportName: 'SureFire Report',
                  reportTitles: 'SureFire Reports'])
                 archiveArtifacts artifacts: 'target/', fingerprint: true
