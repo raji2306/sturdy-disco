@@ -44,7 +44,7 @@ pipeline {
                 sh "mvn package"
                 script {
                     if( currentBuild.currentResult == "SUCCESS" ){
-                        sh "mv ~/*.war /"
+                        sh "mv *.war /"
                     }
                     else {
                         echo "Build Stage is unsuccessful"
