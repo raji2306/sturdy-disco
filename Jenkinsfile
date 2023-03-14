@@ -1,4 +1,5 @@
 @Library("shared-library") _
+import groovy.io.filetype
 pipeline {
     parameters { 
         string(name: 'machine', defaultValue: 'linux', description: 'Choose the Machine that you wants to run the build') 
