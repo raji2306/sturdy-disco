@@ -6,5 +6,5 @@ def fileWrite(string filename){
       writer.close()
     }  
     else {
-      echo "Sorry, The requested file is not writable"
+      println "Sorry, The requested file is not writable"
 }
