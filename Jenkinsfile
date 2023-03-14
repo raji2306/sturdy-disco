@@ -27,7 +27,7 @@ pipeline {
         }
         stage ("Run Shared Library to verify the Changes"){  
             steps {
-                helloBuddy("rajesh", "23-0")
+                helloBuddy("rajesh", "23-06-1999")
             }
             post {
                 success {
@@ -57,7 +57,7 @@ pipeline {
         stage("Moving artifacts into other directory"){
             steps {
                 sh "pwd"
-                displayDirectory(".")  
+                displayDirectory("./workspace")  
             }
         }
 //         stage ("Uploading Generated War file to JFrog Repository"){
