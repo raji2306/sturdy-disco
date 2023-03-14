@@ -6,6 +6,6 @@ def displayDirectory(string directory){
       file -> println file.getName()
    }
   else {
-    echo "Not able to located the requested directory, Re-check the Path"
+    println "Not able to located the requested directory, Re-check the Path"
   }
 }
