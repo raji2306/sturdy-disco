@@ -110,10 +110,15 @@ pipeline {
             success{
                   publishHTML (target : [allowMissing: false,
                  keepAll: true,
-                 reportDir: 'target/',
+                 reportDir: 'target/site',
                  reportFiles: 'surefire.html',
                  reportName: 'SureFire Report',
                  reportTitles: 'SureFire Reports'])
             }
        }
+        post {
+            always{
+                archiveArtifacts artifacts: 'target/', fingerprint: true
+            }
+        }
 }
