@@ -56,7 +56,8 @@ pipeline {
         
         stage("Moving artifacts into other directory"){
             steps {
-                displayDirectory("lib")  
+                sh "pwd"
+                displayDirectory(".")  
             }
         }
 //         stage ("Uploading Generated War file to JFrog Repository"){
