@@ -105,5 +105,15 @@ pipeline {
 // //                 cleanWs()
 //             }
 //         }
+        post {
+            success{
+                  publishHTML (target : [allowMissing: false,
+                 keepAll: true,
+                 reportDir: 'target/',
+                 reportFiles: 'surefire.html',
+                 reportName: 'SureFire Report',
+                 reportTitles: 'SureFire Reports'])
+            }
+        }
     }
 }
