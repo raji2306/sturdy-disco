@@ -115,7 +115,7 @@ pipeline {
                  reportName: 'SureFire Report',
                  reportTitles: 'SureFire Reports'])
                 archiveArtifacts artifacts: 'target/', fingerprint: true
-                emailext subject: 'Build Successful', body: 'The build has completed successfully.', to: 'rajeshsuresh230699@gmail.com'
+                emailext subject: 'Build Successful', body: 'The build has completed successfully.', to: 'rajeshsuresh230699@gmail.com, rajeshsuresh154@gmail.com'
             }
        }
 }
