@@ -26,9 +26,9 @@ pipeline {
             }
         }
         stage ("Run Shared Library to verify the Changes"){  
-            agent {
-                label "docker-slave"
-            }
+//             agent {
+//                 label "docker-slave"
+//             }
             steps {
                 helloBuddy("rajesh", "23-06-1999")
             }
