@@ -12,6 +12,10 @@ RUN apt-get upgrade -y && \
     mkdir /home/jenkins/ && \
     mkdir /home/jenkins/.ssh
 
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
 copy authorized_keys /home/jenkins/.ssh/
 
 RUN chown -R jenkins:jenkins /home/jenkins/.ssh/
