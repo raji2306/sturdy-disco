@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All Users</title>
+  </head>
+  <body>
+    <h1>All Users</h1>
+    <div id="user-holder">
+        <ul>
+            {% for user in users %}
+                <li>{{ user.username }} - {{ user.password }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+    <a href="/">Add user</a>
+  </body>
+</html>
+
