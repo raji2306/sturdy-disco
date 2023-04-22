@@ -1,0 +1,22 @@
+version: '3'
+services:
+  flask-app:
+    container_name: flask-container
+    image: flask-app
+    ports:
+    - 5000:5000
+    environment:
+      #- DATABASE_URL=sqlite:///mydb.db
+    - DATABASE_URL=sqlite3:////mydb/userz.db
+    depends_on:
+    - sql-db
+    links:
+    - sql-db
+  sql-db:
+    image: my-sqll
+    volumes:
+    - mydb:/mine
+    command: ["bash", "-c", "sqlite3 /mine/userz.db; while true; do sleep 10; done"]
+volumes:
+  mydb:
+
