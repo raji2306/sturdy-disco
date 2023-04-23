@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  flask-app:
+  flask-app: #Docker image : raji2306/flask-app:1.0
     image: mine
     restart: always
     depends_on:
