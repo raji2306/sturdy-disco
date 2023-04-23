@@ -19,4 +19,3 @@ ENV DATABASE_URL=mysql://root:example@db:3306/myflaskapp?charset=utf8mb4
 EXPOSE 5000
 
 CMD ["python3", "app.py"]
-
