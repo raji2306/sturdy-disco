@@ -1,0 +1,32 @@
+apiVersion: v1 
+kind : Pod
+
+metadata :
+  name : liveness-check
+  labels :
+    health-check : liveness-probe
+
+spec :
+  containers :
+  - name : nginx 
+    image : mynginximage:23
+    resources :
+      requests :
+        cpu : "0.5"
+        memory : "512Mi"
+      limits :
+        cpu : "0.5"
+        memory : "512Mi"
+    ports :
+    - containerPort : 80
+    args :
+    - /bin/sh
+    - -c 
+    - touch /tmp/mine.txt; sleep 30; rm -f /tmp/mine.txt; sleep 600
+    livenessProbe :
+      exec :
+        command :
+        - cat 
+        - /tmp/mine.txt
+      initialDelaySeconds : 5
+      periodSeconds : 5
