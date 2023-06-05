@@ -1,0 +1,19 @@
+apiVersion: eksctl.io/v1alpha5
+kind : ClusterConfig
+
+metadata :
+- name : my-cluster
+  region : ap-south-1
+  version : "1.22"
+  # availablilityZones :[]
+  annotations :
+    owner : Rajesh 
+
+nodeGroups :
+- name : my-nodegroups
+  instanceType : t2.micro
+  desiredCapacity : 1
+  maxSize: 5
+  volumeSize : 15
+  labels :
+    environment : production
