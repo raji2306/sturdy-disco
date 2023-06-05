@@ -15,3 +15,8 @@ sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
 
 Step 4 : Install AWS IAM Authenticator { Ref : https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html }
+
+Step 5 : Run below command to create Cluster 
+
+eksctl create cluster -f file_name
+
