@@ -1,0 +1,30 @@
+apiVersion : v1
+kind : configmap
+metadata :
+  name : config-details
+spec :
+  containers :
+  - name : nginx
+    image : raji2306/my-nginximage:23
+    ports :
+    - containerPort : 80
+    resources :
+      limits :
+        cpu : 0.5
+        memory : 500Mi
+      requests :
+        cpu : 0.5
+        memory : 500Mi 
+    env : 
+    - name : config-details 
+      valueFrom : 
+        configMapKeyRef :
+          name : "username"
+          key : "username"
+    volumeMounts :  
+    - mountPath : /tmp
+      name : config-filez
+  volumes :
+  - name : config-filez
+    configMap : 
+    - name : movie 
