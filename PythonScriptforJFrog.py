@@ -44,7 +44,7 @@ def download_file():
     with open('donwloaded_filename', 'w') as fp:
         print("file got created successfully, ")
 
-]    check_availability = requests.get(url + repo_subPath + download_fileName, auth=auth )
+    check_availability = requests.get(url + repo_subPath + download_fileName, auth=auth )
 
     if check_availability.status_code == 200 :
         with open (download_file_path, "wb") as file :
