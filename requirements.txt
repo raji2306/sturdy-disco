@@ -1,6 +1,0 @@
-Flask
-flask_sqlalchemy==3.0.0
-sqlalchemy==1.4.22
-mysqlclient 
-
-
