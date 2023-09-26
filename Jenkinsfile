@@ -22,6 +22,8 @@ pipeline {
     post {
         always {
             // Define and pass the necessary environment variables
+        always {
+            // Define and pass the necessary environment variables within the same scope
             script {
                 def recipients = "rajeshsuresh154@gmail.com, rajeshsuresh230699@gmail.com"
                 def buildNumber = env.BUILD_NUMBER
@@ -29,7 +31,8 @@ pipeline {
                 def buildResult = currentBuild.resultIsBetterOrEqualTo('SUCCESS') ? 'SUCCESS' : 'FAILURE'
                 def buildUrl = env.BUILD_URL
 
-                load 'email.groovy'
+                // Load the emailConfig.groovy script in the same scope
+                load 'path/to/emailConfig.groovy'
             }
         }
     }
