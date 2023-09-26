@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your project here
-                sh 'echo "Building the project"'
+                bat 'echo "Building the project"'
                 // Replace this with actual build commands, e.g., 'mvn clean install' for Maven
             }
         }
@@ -27,22 +27,17 @@ pipeline {
 
     post {
         always {
-            // Define and pass the necessary environment variables
-        script {
-            def buildNumber = currentBuild.number.toString()
-            def jobName = env.JOB_NAME
-            def buildResult = currentBuild.resultIsBetterOrEqualTo('SUCCESS') ? 'SUCCESS' : 'FAILURE'
-            def buildUrl = env.BUILD_URL
+            script {
+                def buildNumber = currentBuild.number.toString()
+                echo "Build Number: $buildNumber"
 
-            // Load the emailConfig.groovy script in the same scope
-            load 'email.groovy'
+                def jobName = env.JOB_NAME
+                def buildResult = currentBuild.resultIsBetterOrEqualTo(Result.SUCCESS) ? "SUCCESS" : "FAILURE"
+                def buildUrl = env.BUILD_URL
 
-            // Replace the 'nohup' command with a Windows-friendly command using 'bat'
-            bat """
-                echo Sending email notification...
-                groovy email.groovy
-            """
-        }
+                // Load the emailConfig.groovy script in the same scope
+                load 'email.groovy', buildNumber: buildNumber, jobName: jobName, buildResult: buildResult, buildUrl: buildUrl
+            }
         }
     }
 }
