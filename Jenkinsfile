@@ -3,6 +3,11 @@ pipeline {
 
     stages {
         // Define your stages here
+                    steps {
+                // Define the build steps here
+                // For example, you can use 'sh' to execute shell commands
+            bat 'echo "Building the project..."'
+            }
     }
 
     post {
