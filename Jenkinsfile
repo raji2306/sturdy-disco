@@ -21,9 +21,15 @@ pipeline {
 
     post {
         always {
-            // Import and execute the email configuration from the shared Groovy script
+            // Define and pass the necessary environment variables
             script {
-                load 'email.groovy'
+                def recipients = "rajeshsuresh154@gmail.com, rajeshsuresh230699@gmail.com"
+                def buildNumber = env.BUILD_NUMBER
+                def jobName = env.JOB_NAME
+                def buildResult = currentBuild.resultIsBetterOrEqualTo('SUCCESS') ? 'SUCCESS' : 'FAILURE'
+                def buildUrl = env.BUILD_URL
+
+                load 'path/to/emailConfig.groovy'
             }
         }
     }
