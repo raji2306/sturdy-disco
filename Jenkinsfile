@@ -1,13 +1,19 @@
 pipeline {
     agent any
 
-    stages {
-        // Define your stages here
-                    steps {
-                // Define the build steps here
-                // For example, you can use 'sh' to execute shell commands
-            bat 'echo "Building the project..."'
+   stages {
+        stage('Stage 1') {
+            steps {
+                // Define your build steps here
+                sh 'echo "Building..."'
             }
+        }
+        stage('Stage 2') {
+            steps {
+                // Define your deployment steps here
+                sh 'echo "Deploying..."'
+            }
+        }
     }
 
     post {
