@@ -35,12 +35,12 @@ pipeline {
             def buildUrl = env.BUILD_URL
 
             // Load the emailConfig.groovy script in the same scope
-            load 'path/to/emailConfig.groovy'
+            load 'email.groovy'
 
             // Replace the 'nohup' command with a Windows-friendly command using 'bat'
             bat """
                 echo Sending email notification...
-                groovy path/to/emailConfig.groovy
+                groovy email.groovy
             """
         }
         }
