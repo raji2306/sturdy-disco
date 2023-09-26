@@ -1,6 +1,11 @@
 pipeline {
     agent any // Use any available agent/node to run the pipeline
 
+    environment {
+        // Define environment variables that you want to use throughout the pipeline
+        RECIPIENTS = "rajeshsuresh154@gmail.com, rajeshsuresh230699@gmail.com"
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -14,7 +19,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your project here
-                bat 'echo "Building the project"'
+                sh 'echo "Building the project"'
                 // Replace this with actual build commands, e.g., 'mvn clean install' for Maven
             }
         }
@@ -24,8 +29,7 @@ pipeline {
         always {
             // Define and pass the necessary environment variables
             script {
-                def recipients = "rajeshsuresh154@gmail.com, rajeshsuresh230699@gmail.com"
-                def buildNumber = env.BUILD_NUMBER
+                def buildNumber = currentBuild.number.toString()
                 def jobName = env.JOB_NAME
                 def buildResult = currentBuild.resultIsBetterOrEqualTo('SUCCESS') ? 'SUCCESS' : 'FAILURE'
                 def buildUrl = env.BUILD_URL
