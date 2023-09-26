@@ -29,7 +29,7 @@ pipeline {
                 def buildResult = currentBuild.resultIsBetterOrEqualTo('SUCCESS') ? 'SUCCESS' : 'FAILURE'
                 def buildUrl = env.BUILD_URL
 
-                load 'path/to/emailConfig.groovy'
+                load 'email.groovy'
             }
         }
     }
