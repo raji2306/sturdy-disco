@@ -28,15 +28,21 @@ pipeline {
     post {
         always {
             // Define and pass the necessary environment variables
-            script {
-                def buildNumber = currentBuild.number.toString()
-                def jobName = env.JOB_NAME
-                def buildResult = currentBuild.resultIsBetterOrEqualTo('SUCCESS') ? 'SUCCESS' : 'FAILURE'
-                def buildUrl = env.BUILD_URL
+        script {
+            def buildNumber = currentBuild.number.toString()
+            def jobName = env.JOB_NAME
+            def buildResult = currentBuild.resultIsBetterOrEqualTo('SUCCESS') ? 'SUCCESS' : 'FAILURE'
+            def buildUrl = env.BUILD_URL
 
-                // Load the emailConfig.groovy script in the same scope
-                load 'email.groovy'
-            }
+            // Load the emailConfig.groovy script in the same scope
+            load 'path/to/emailConfig.groovy'
+
+            // Replace the 'nohup' command with a Windows-friendly command using 'bat'
+            bat """
+                echo Sending email notification...
+                groovy path/to/emailConfig.groovy
+            """
+        }
         }
     }
 }
