@@ -1,3 +1,4 @@
+import groovy.io.FileType
 pipeline {
     agent any // Use any available agent/node to run the pipeline
 
