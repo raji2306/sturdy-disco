@@ -21,7 +21,7 @@ pipeline {
     post {
         always {
             // Define and pass the necessary environment variables
-       script {
+        script {
             def recipients = "rajeshsuresh154@gmail.com, rajeshsuresh230699@gmail.com"
             def buildNumber = env.BUILD_NUMBER
             def jobName = env.JOB_NAME
@@ -35,8 +35,8 @@ pipeline {
             echo "Build Result: ${buildResult}"
             echo "Build URL: ${buildUrl}"
 
-            // Call the email.groovy script
-            load 'email.groovy', config: [buildNumber: buildNumber, jobName: jobName, buildResult: buildResult, buildUrl: buildUrl]
+            // Call the email.groovy script with named arguments
+            load 'email.groovy', buildNumber: buildNumber, jobName: jobName, buildResult: buildResult, buildUrl: buildUrl
         }
         }
     }
