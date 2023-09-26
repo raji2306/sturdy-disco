@@ -1,5 +1,5 @@
 def recipients = "rajeshsuresh154@gmail.com, rajeshsuresh230699@gmail.com"
-def subject = "Build ${BUILD_NUMBER} in ${JOB_NAME} - ${BUILD_STATUS}"
+def subject = "Build ${BUILD_NUMBER} in ${JOB_NAME}"
 def body = """
 <p>Build Result: ${BUILD_RESULT}</p>
 <p>Project: ${PROJECT_NAME}</p>
