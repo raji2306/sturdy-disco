@@ -1,14 +1,14 @@
 pipeline {
     agent any
 
-   stages {
-        stage('Stage 1') {
+    stages {
+        stage('Build') {
             steps {
                 // Define your build steps here
                 sh 'echo "Building..."'
             }
         }
-        stage('Stage 2') {
+        stage('Deploy') {
             steps {
                 // Define your deployment steps here
                 sh 'echo "Deploying..."'
@@ -18,26 +18,9 @@ pipeline {
 
     post {
         always {
+            // Load and execute the email.groovy script
             script {
-                def buildNumber = currentBuild.number.toString()
-                echo "Build Number: $buildNumber"
-
-                // Define the arguments as a map
-                def emailArgs = [
-                    buildNumber: buildNumber,
-                    jobName: env.JOB_NAME,
-                    buildResult: currentBuild.result,
-                    buildUrl: env.BUILD_URL
-                ]
-
-                // Load the emailConfig.groovy script and pass the arguments as a map
-                load 'email.groovy', emailArgs
-
-                // Replace the 'nohup' command with a Windows-friendly command using 'bat'
-                bat """
-                    echo Sending email notification...
-                    groovy email.groovy
-                """
+                load 'email.groovy'
             }
         }
     }
