@@ -1,16 +1,9 @@
-def call(Map config) {
-    def recipients = "rajeshsuresh154@gmail.com, rajeshsuresh230699@gmail.com"
-    def subject = "Build ${config.buildNumber} in ${config.jobName} - ${config.buildResult}"
-    def body = """
-    Build Result: ${config.buildResult}
-    Project: ${config.jobName}
-    Build URL: ${config.buildUrl}
-    """
+def recipients = "rajeshsuresh154@gmail.com, rajeshsuresh230699@gmail.com"
+def buildNumber = env.BUILD_NUMBER
+def jobName = env.JOB_NAME
+def buildResult = currentBuild.resultIsBetterOrEqualTo('SUCCESS') ? 'SUCCESS' : 'FAILURE'
+def buildUrl = env.BUILD_URL
 
-    // Use the mail step to send the email
-    mail(
-        to: recipients,
-        subject: subject,
-        body: body
-    )
-}
+emailScript(buildNumber: buildNumber, jobName: jobName, buildResult: buildResult, buildUrl: buildUrl)
+
+// Define a separate stage or step for the email sending logic if needed.
