@@ -21,15 +21,23 @@ pipeline {
     post {
         always {
             // Define and pass the necessary environment variables
-            script {
-                def recipients = "rajeshsuresh154@gmail.com, rajeshsuresh230699@gmail.com"
-                def buildNumber = env.BUILD_NUMBER
-                def jobName = env.JOB_NAME
-                def buildResult = currentBuild.resultIsBetterOrEqualTo('SUCCESS') ? 'SUCCESS' : 'FAILURE'
-                def buildUrl = env.BUILD_URL
+       script {
+            def recipients = "rajeshsuresh154@gmail.com, rajeshsuresh230699@gmail.com"
+            def buildNumber = env.BUILD_NUMBER
+            def jobName = env.JOB_NAME
+            def buildResult = currentBuild.resultIsBetterOrEqualTo('SUCCESS') ? 'SUCCESS' : 'FAILURE'
+            def buildUrl = env.BUILD_URL
 
-                load 'email.groovy'
-            }
+            // Debug statements to verify variable values
+            echo "Sending email to: ${recipients}"
+            echo "Build Number: ${buildNumber}"
+            echo "Job Name: ${jobName}"
+            echo "Build Result: ${buildResult}"
+            echo "Build URL: ${buildUrl}"
+
+            // Call the email.groovy script
+            load 'email.groovy', config: [buildNumber: buildNumber, jobName: jobName, buildResult: buildResult, buildUrl: buildUrl]
+        }
         }
     }
 }
