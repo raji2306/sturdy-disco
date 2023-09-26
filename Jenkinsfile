@@ -1,25 +1,33 @@
 pipeline {
-    agent any
+    agent any // Use any available agent/node to run the pipeline
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                // Define your build steps here
-                sh 'echo "Building..."'
+                git branch: 'master',
+                url: 'https://github.com/raji2306/sturdy-disco.git'
             }
         }
-        stage('Deploy') {
+
+        stage('Build') {
             steps {
-                // Define your deployment steps here
-                sh 'echo "Deploying..."'
+                // Build your project here
+                bat 'echo "Building the project"'
+                // Replace this with actual build commands, e.g., 'mvn clean install' for Maven
             }
         }
     }
 
     post {
         always {
-            // Load and execute the email.groovy script
+            // Define and pass the necessary environment variables
             script {
+                def recipients = "rajeshsuresh154@gmail.com, rajeshsuresh230699@gmail.com"
+                def buildNumber = env.BUILD_NUMBER
+                def jobName = env.JOB_NAME
+                def buildResult = currentBuild.resultIsBetterOrEqualTo('SUCCESS') ? 'SUCCESS' : 'FAILURE'
+                def buildUrl = env.BUILD_URL
+
                 load 'email.groovy'
             }
         }
