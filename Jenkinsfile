@@ -24,17 +24,19 @@ pipeline {
 
     post {
         always {
-            script {
-                def buildNumber = currentBuild.number.toString()
-                echo "Build Number: $buildNumber"
-                def buildResult = currentBuild.resultIsBetterOrEqualTo("SUCCESS") ? "SUCCESS" : "FAILURE"
-                echo "Build Result: $buildResult"
+         script {
+            def buildNumber = currentBuild.number.toString()
+            echo "Build Number: $buildNumber"
 
-                def jobName = env.JOB_NAME
-                def buildUrl = env.BUILD_URL
+            // Load the emailConfig.groovy script with named arguments
+            load 'email.groovy', buildNumber: buildNumber, jobName: env.JOB_NAME, buildResult: currentBuild.result, buildUrl: env.BUILD_URL
 
-                load 'email.groovy', buildNumber: buildNumber, jobName: jobName, buildResult: buildResult, buildUrl: buildUrl
-            }
+            // Replace the 'nohup' command with a Windows-friendly command using 'bat'
+            bat """
+                echo Sending email notification...
+                groovy email.groovy
+            """
+        }
         }
     }
 }
