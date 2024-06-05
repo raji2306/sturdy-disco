@@ -1,18 +1,18 @@
-import groovy.io.FileType
-@Library("shared-library") _
+// import groovy.io.FileType
+// @Library("shared-library") _
 pipeline {
-    parameters { 
-        string(name: 'machine', defaultValue: 'linux', description: 'Choose the Machine that you wants to run the build') 
-        string(name: 'branch', defaultValue: 'master', description: 'Choose the branch that you wants to checkout')
-    }
-    environment {
-           my_branch = "${params.branch}"
-    }
-    tools {
-        jdk  "java"
-        maven "maven"
-        jfrog "jfrog-cli"
-    }
+    // parameters { 
+    //     string(name: 'machine', defaultValue: 'linux', description: 'Choose the Machine that you wants to run the build') 
+    //     string(name: 'branch', defaultValue: 'master', description: 'Choose the branch that you wants to checkout')
+    // }
+    // environment {
+    //        my_branch = "${params.branch}"
+    // }
+    // tools {
+    //     jdk  "java"
+    //     maven "maven"
+    //     jfrog "jfrog-cli"
+    // }
     agent any 
      triggers{
         cron('*/20 * * * *' )
@@ -20,30 +20,30 @@ pipeline {
     stages {
         stage ("Git Checkout Stage"){
             steps {
-                git branch: "${env.my_branch}" ,
+                // git branch: "${env.my_branch}" ,
                 credentialsId: 'git_cred',
                 url: 'git@github.com:raji2306/sturdy-disco.git'
             }
         }
-        stage ("Run Shared Library to verify the Changes"){  
-            agent {
-                label "docker-slave"
-            }
-            steps {
-                helloBuddy("rajesh", "23-06-1999")
-            }
-            post {
-                success {
-                    echo "Fine! The stage completed successfully"
-                }
-            }
-        }
+        // stage ("Run Shared Library to verify the Changes"){  
+        //     agent {
+        //         label "docker-slave"
+        //     }
+        //     steps {
+        //         helloBuddy("rajesh", "23-06-1999")
+        //     }
+        //     post {
+        //         success {
+        //             echo "Fine! The stage completed successfully"
+        //         }
+        //     }
+        // }
         stage ("Running Build and Packaging Stage"){
-            when{
-                expression {
-                    env.GIT_BRANCH == "master"
-                }
-            }
+            // when{
+            //     expression {
+            //         env.GIT_BRANCH == "master"
+            //     }
+            // }
             steps {
                 sh "mvn package  surefire-report:report"
                 sh "tree"
