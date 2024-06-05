@@ -65,6 +65,7 @@ pipeline {
                 displayDirectory("./workspace")  
             }
         }
+    }
        
 //         stage ("Uploading Generated War file to JFrog Repository"){
 //             steps {
@@ -123,4 +124,3 @@ pipeline {
             }
        }
     }
-}
