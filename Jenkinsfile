@@ -21,8 +21,9 @@ pipeline {
         stage ("Git Checkout Stage"){
             steps {
                 // git branch: "${env.my_branch}" ,
-                credentialsId: 'git_cred',
-                url: 'git@github.com:raji2306/sturdy-disco.git'
+                // credentialsId: 'git_cred',
+                // url: 'git@github.com:raji2306/sturdy-disco.git'
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/raji2306/sturdy-disco.git']])
             }
         }
         // stage ("Run Shared Library to verify the Changes"){  
