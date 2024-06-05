@@ -14,9 +14,9 @@ pipeline {
     //     jfrog "jfrog-cli"
     // }
     agent any 
-     triggers{
-        cron('*/20 * * * *' )
-       }
+     // triggers{
+     //    cron('*/20 * * * *' )
+     //   }
     stages {
         stage ("Git Checkout Stage"){
             steps {
