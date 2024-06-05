@@ -108,7 +108,7 @@ pipeline {
 // //                 cleanWs()
 //             }
 //         }
-    }
+    // }
         post {
             success{
                   publishHTML (target : [allowMissing: false,
