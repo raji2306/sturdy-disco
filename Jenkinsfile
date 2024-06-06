@@ -111,16 +111,24 @@ pipeline {
 //             }
 //         }
     // }
-        post {
-            success{
-                  publishHTML (target : [allowMissing: false,
-                 keepAll: true,
-                 reportDir: 'target/site',
-                 reportFiles: 'surefire-report.html',
-                 reportName: 'SureFire Report',
-                 reportTitles: 'SureFire Reports'])
-                archiveArtifacts artifacts: 'target/', fingerprint: true
-                emailext subject: 'Build Successful', body: 'The build has completed successfully.', attachmentsPattern: 'target/surefire-report.html', attachLog: true, to: 'rajeshsuresh230699@gmail.com, rajeshsuresh154@gmail.com'
+            post {
+                success {
+                    publishHTML(target: [
+                        allowMissing: false,
+                        keepAll: true,
+                        reportDir: 'target/site',
+                        reportFiles: 'surefire-report.html',
+                        reportName: 'SureFire Report',
+                        reportTitles: 'SureFire Reports'
+                    ])
+                    archiveArtifacts artifacts: 'target/**', fingerprint: true
+                    emailext(
+                        subject: 'Build Successful',
+                        body: 'The build has completed successfully.',
+                        attachmentsPattern: 'target/site/surefire-report.html',
+                        attachLog: true,
+                        to: 'rajeshsuresh230699@gmail.com, rajeshsuresh154@gmail.com'
+                    )
+                }
             }
-       }
     }
