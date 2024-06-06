@@ -18,6 +18,11 @@ pipeline {
      //    cron('*/20 * * * *' )
      //   }
     stages {
+        stage('Install tree') {
+            steps {
+                sh 'sudo apt-get update && sudo apt-get install -y tree'
+            }
+        }
         stage ("Git Checkout Stage"){
             steps {
                 // git branch: "${env.my_branch}" ,
