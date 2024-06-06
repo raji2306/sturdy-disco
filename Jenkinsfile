@@ -62,7 +62,7 @@ pipeline {
         stage("Moving artifacts into other directory"){
             steps {
                 sh "pwd"
-                displayDirectory("./workspace")  
+                // displayDirectory("./workspace")  
             }
         }
     }
