@@ -26,6 +26,7 @@ pipeline {
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/raji2306/sturdy-disco.git']])
             }
         }
+    }
         // stage ("Run Shared Library to verify the Changes"){  
         //     agent {
         //         label "docker-slave"
