@@ -126,7 +126,7 @@ pipeline {
                     emailext(
                         subject: 'Build Successful',
                         body: 'The build has completed successfully.',
-                        attachmentsPattern: 'target/site/surefire-report.html',
+                        // attachmentsPattern: 'target/site/surefire-report.html',
                         attachLog: true,
                         to: 'rajeshsuresh230699@gmail.com, rajeshsuresh154@gmail.com'
                     )
