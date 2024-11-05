@@ -39,33 +39,33 @@ pipeline {
         //         }
         //     }
         // }
-        stage ("Running Build and Packaging Stage"){
-            // when{
-            //     expression {
-            //         env.GIT_BRANCH == "master"
-            //     }
-            // }
-            steps {
-                sh "mvn package  surefire-report:report"
-                sh "tree"
-                script {
-                    if( currentBuild.currentResult == "SUCCESS" ){
-                        echo "Build Stage is successful"
-                    }
-                    else {
-                        echo "Build Stage is unsuccessful"
-                    }
-                }
-            }
-        }
+        // stage ("Running Build and Packaging Stage"){
+        //     // when{
+        //     //     expression {
+        //     //         env.GIT_BRANCH == "master"
+        //     //     }
+        //     // }
+        //     steps {
+        //         sh "mvn package  surefire-report:report"
+        //         sh "tree"
+        //         script {
+        //             if( currentBuild.currentResult == "SUCCESS" ){
+        //                 echo "Build Stage is successful"
+        //             }
+        //             else {
+        //                 echo "Build Stage is unsuccessful"
+        //             }
+        //         }
+        //     }
+        // }
         
-        stage("Moving artifacts into other directory"){
-            steps {
-                sh "pwd"
-                // displayDirectory("./workspace")  
-            }
-        }
-    }
+    //     stage("Moving artifacts into other directory"){
+    //         steps {
+    //             sh "pwd"
+    //             // displayDirectory("./workspace")  
+    //         }
+    //     }
+    // }
        
 //         stage ("Uploading Generated War file to JFrog Repository"){
 //             steps {
@@ -113,14 +113,14 @@ pipeline {
     // }
             post {
                 success {
-                    publishHTML(target: [
-                        allowMissing: false,
-                        keepAll: true,
-                        reportDir: 'target/site',
-                        reportFiles: 'surefire-report.html',
-                        reportName: 'SureFire Report',
-                        reportTitles: 'SureFire Reports'
-                    ])
+                    // publishHTML(target: [
+                    //     allowMissing: false,
+                    //     keepAll: true,
+                    //     reportDir: 'target/site',
+                    //     reportFiles: 'surefire-report.html',
+                    //     reportName: 'SureFire Report',
+                    //     reportTitles: 'SureFire Reports'
+                    // ])
                     archiveArtifacts artifacts: 'target/**', fingerprint: true
                     emailext(
                         subject: 'Build Successful',
