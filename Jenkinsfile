@@ -122,7 +122,7 @@ pipeline {
                     //     reportName: 'SureFire Report',
                     //     reportTitles: 'SureFire Reports'
                     // ])
-                    archiveArtifacts artifacts: 'target/**', fingerprint: true
+                    // archiveArtifacts artifacts: 'target/**', fingerprint: true
                     emailext(
                         subject: 'Build Successful',
                         body: 'The build has completed successfully.',
